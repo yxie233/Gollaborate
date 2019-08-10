@@ -3,7 +3,7 @@
 1: STRUCTURE
 The Gollaborate directory structure is depicted below:
 
-proj2_c1l0b_c9g0b_q8h0b_v9i0b/
+Gollaborate/
 	- client
 			- client2.go
 	- server
@@ -21,11 +21,17 @@ package on the target machine before attempting to run the application by execut
 
 3: HOW TO RUN
 To run one instance of the Gollaborate text editor, 3 files are of interest:
-	(1) server2.go: This file accepts 1 command-line arguments: (1) The IP and port to listen for incoming client connection
-		 							requests
-	(2) client2.go: This file accepts 3 command-line arguments: (1) IP:PORT that server is listening on, (2) the IP:PORT to 									listen to for incoming connection requests from other client nodes and (3) the IP:PORT to listen to for 									incoming connection request from editor
-	(3) myeditor.go: This file accepts 4 command-line arguments: (1) User name (2) the IP:PORT that the client is listening on 										 for connection request from editor (3) IP:PORT that editor is listening for connection request from client 
-									 and (4) the document ID. 
+	(1) server2.go: This file accepts 1 command-line arguments: 
+	    (a) The IP and port to listen for incoming client connection requests
+	(2) client2.go: This file accepts 3 command-line arguments: 
+	    (a) IP:PORT that server is listening on, 
+	    (b) the IP:PORT to listen to for incoming connection requests from other client nodes and 
+	    (c) the IP:PORT to listen to for incoming connection request from editor
+	(3) myeditor.go: This file accepts 4 command-line arguments: 
+	    (a) User name 
+	    (b) the IP:PORT that the client is listening on for connection request from editor 
+	    (c) IP:PORT that editor is listening for connection request from client and 
+	    (d) the document ID. 
 
 The server should be instantiated first, but only one instance needs to be running. For each user that is editing a particular document, a client and application node has to be instantiated in that order. Thus, if one user wishes to edit 2 documents, it is necessary to instantiate two distinct client-app node pairs. These pairs of nodes should have different sets of ports. 
 
@@ -37,14 +43,14 @@ If testing on local computer with 3 users and 1 document:
 #2 - Open 2 terminals for user 1. In the first of two terminals, input the following command: 
 		 		  <go run client2.go 127.0.0.1:5555 127.0.0.1:9999 127.0.0.1:4322>
      In the second of two terminals, input the following command: 
-					<go run myeditor.go John 127.0.0.1:4322 127.0.0.1:8888 doc1>
+				  <go run myeditor.go John 127.0.0.1:4322 127.0.0.1:8888 doc1>
 #3 - Repeat step 2 with the commands below:
 
 #3.1: User 2 client: <go run client2.go 127.0.0.1:5555 127.0.0.1:7777 127.0.0.1:4200>
-		  User 2 application: <go run myeditor.go Jane 127.0.0.1:4200 127.0.0.1:7776 doc1>
+      User 2 application: <go run myeditor.go Jane 127.0.0.1:4200 127.0.0.1:7776 doc1>
 
 #3.2: User 3 client: <go run client2.go 127.0.0.1:5555 127.0.0.1:7000 127.0.0.1:4100>
-		  User 3 application: <go run myeditor.go Tifa 127.0.0.1:4100 127.0.0.1:7001 doc1>
+      User 3 application: <go run myeditor.go Tifa 127.0.0.1:4100 127.0.0.1:7001 doc1>
 
 
 3.2: HOW TO RUN REMOTELY
